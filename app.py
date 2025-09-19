@@ -29,7 +29,7 @@ app.app_context()
 
 @app.route('/')
 async def index():
-    return render_template('index.jinja')
+    return redirect(url_for('auth.login'))
 
 if __name__ == "__main__":
     app.run(
