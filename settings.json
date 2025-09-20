@@ -3,7 +3,7 @@
         "host": "100.116.29.49",
         "user": "root",
         "passwd": "ikero9090",
-        "db": "PANAGAMING",
+        "db": "ADMINDB",
         "auth_plugin": "mysql_native_password"
     },
     "flask": {
