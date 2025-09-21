@@ -11,7 +11,19 @@
                 <th>
                     <button onclick="new_image_modal.showModal()" class="btn btn-sm btn-success"><strong>Nuevo</strong></button>
                 </th>
-                <th></th>
+                <th>
+                    {%if filter_text%}
+                    <form action="{{url_for('pannel.filtered')}}" method="post">
+                        <input type="text" placeholder="Buscar" value="{{filter_text}}" name="text" class="input input-sm input-success" />
+                        <button type="submit" class="btn btn-sm btn-success">Buscar</button>
+                    </form>
+                    {%else%}
+                    <form action="{{url_for('pannel.filtered')}}" method="post">
+                        <input type="text" placeholder="Buscar" name="text" class="input input-sm input-success" />
+                        <button type="submit" class="btn btn-sm btn-success">Buscar</button>
+                    </form>
+                    {%endif%}
+                </th>
                 <th></th>
                 <th></th>
             </tr>
@@ -24,6 +36,8 @@
                 </th>
                 <td>
                     <span>{{image.name}}</span>
+                </td>
+                <td>
                 </td>
                 <td>
                     <a href="{{url_for('images.image', filename=image.image)}}">http://{{ip}}:{{port}}/images/{{image.image}}</a>

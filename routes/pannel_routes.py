@@ -11,6 +11,7 @@ settings = {}
 with open("settings.json") as setting:
     settings = json.load(setting)
 
+# Muestra el panel de gestion de imagenes png
 @pannel_bp.route('/', methods=['GET'])
 async def index():
     if 'id' in session:
@@ -30,3 +31,29 @@ async def index():
 
     else:
         return redirect(url_for('index'))
+
+# Panel filtrado por caracteres
+@pannel_bp.route('/filtered', methods=['GET', 'POST'])
+async def filtered():
+    if 'id' in session:
+        text = request.form['text']
+
+        if text:
+            page = request.args.get("page", 1, type=int)
+            images = db.session.query(Image).filter(Image.name.like(f"%{text}%")).paginate(page=page, per_page=5)
+
+            ip = settings['flask']['ip']
+            port = settings['flask']['port']
+        
+            return render_template(
+                '/pannel/index.jinja',
+                images=images,
+                ip=ip,
+                port=port,
+                filter_text=text,
+                session=session
+            )
+        else:
+            return redirect(url_for('pannel.index'))
+    else:
+        return redurect(url_for('index'))
