@@ -1,0 +1,17 @@
+version: "3.9"
+services:
+  png_image_gestor:
+    build: .
+    image: png_image_gestor
+    ports:
+      - "5000:5001"
+    
+    volumes:
+      - .:/usr/src/app
+    networks:
+      mc-ring-net:
+        ipv4_address: 172.20.0.10
+
+networks:
+  mc-ring-net:
+    external: true
