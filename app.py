@@ -20,17 +20,14 @@ app.config['UPLOAD_FOLDER'] = 'static/uploads'
 app.config['SQLALCHEMY_DATABASE_URI'] = f"mysql+pymysql://{settings['mysql']['user']}:{settings['mysql']['passwd']}@{settings['mysql']['host']}/{settings['mysql']['db']}"
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
-from routes.auth_routes import auth_bp
-from routes.pannel_routes import pannel_bp
-from routes.images_routes import images_bp  
+db.init_app(app)
+app.app_context()
+
+from routes import auth_bp, pannel_bp, images_bp
 
 app.register_blueprint(auth_bp, url_prefix="/auth")
 app.register_blueprint(pannel_bp, url_prefix="/pannel")
 app.register_blueprint(images_bp, url_prefix="/images")
-
-db.init_app(app)
-app.app_context()
-
 
 @app.route('/')
 async def index():

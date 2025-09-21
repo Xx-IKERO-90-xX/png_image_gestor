@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="es">
-
 <head>
     <meta charset='utf-8'>
     <meta http-equiv='X-UA-Compatible' content='IE=edge'>
@@ -15,6 +14,9 @@
             border-radius: 50%;
             width: 50px;
         }
+        html {
+            background-image: url(/static/img/fondo.png);
+        }
     </style>
 </head>
 <body>
@@ -22,7 +24,7 @@
         style="
             background-image: url(/static/img/fondoverde.jpg);
             background-position: center;    
-        " class="mainmenu navbar p-2 shadow-sm border-b-2">
+        " class="mainmenu navbar p-2 shadow-sm">
         <div class="flex-1">
             <a href="{{url_for('index')}}"><img class="logo" src="/static/img/logo.png" with="20"></a>
         </div>
@@ -34,5 +36,4 @@
         {%block content%} {%endblock%}
     </main>
 </body>
-
 </html>
