@@ -9,9 +9,9 @@ services:
     volumes:
       - .:/usr/src/app
     networks:
-      mc-ring-net:
+      mc-block-net:
         ipv4_address: 172.90.0.20
 
 networks:
-  mc-ring-net:
+  mc-block-net:
     external: true
