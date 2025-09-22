@@ -4,7 +4,7 @@ services:
     build: .
     image: png_image_gestor
     ports:
-      - "5000:5001"
+      - "5001:5001"
     
     volumes:
       - .:/usr/src/app
