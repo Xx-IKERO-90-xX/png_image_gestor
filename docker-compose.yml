@@ -10,7 +10,7 @@ services:
       - .:/usr/src/app
     networks:
       mc-ring-net:
-        ipv4_address: 172.20.0.20
+        ipv4_address: 172.90.0.20
 
 networks:
   mc-ring-net:
