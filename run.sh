@@ -1,7 +1,7 @@
 #!/bin/bash
 
 NETWORK_NAME="mc-block-net"
-SUBNET="172.20.0.0/16"
+SUBNET="172.90.0.0/16"
 
 if ! docker network inspect $NETWORK_NAME >/dev/null 2>&1; then
     echo "La red $NETWORK_NAME no existe. Creándola..."
