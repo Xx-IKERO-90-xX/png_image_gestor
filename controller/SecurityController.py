@@ -2,6 +2,7 @@ from passlib.hash import pbkdf2_sha256
 from models.User import User
 from extensions import db
 
+# Verifica el Login
 async def verify_login(username, passwd):
     valid = False
     
