@@ -7,6 +7,7 @@ from models.User import User
 
 auth_bp = Blueprint('auth', __name__)
 
+# Ruta del Login
 @auth_bp.route('/login', methods=['GET', 'POST'])
 async def login():
     if request.method == 'GET':
@@ -25,5 +26,11 @@ async def login():
         else:
             error_msg = "Fallo en el inicio de sesión!"
             return render_template('/auth/login.jinja', error_msg=error_msg)
+
+# Ruta para cerrar sesión
+@auth_bp.route('/logout', methods=['GET'])
+async def logout():
+    session.clear()
+    return redirect(url_for('index'))
 
     
